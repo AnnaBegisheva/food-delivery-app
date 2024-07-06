@@ -1,0 +1,62 @@
+@import '../../base';
+
+.btn {
+  color: $color-white;
+  font-family: $font-primary;
+  font-weight: 400;
+  font-size: 1.6rem;
+  text-align: center;
+  border: none;
+  border-radius: 1.3rem;
+  padding: 1.3rem 2.4rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s;
+
+  &:active,
+  &:focus {
+    outline: none;
+    transform: translateY(-1px);
+    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.5);
+  }
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+  }
+
+  &--large {
+    padding-inline: 4rem;
+  }
+
+  &--green {
+    background-color: $color-green;
+  }
+
+  &--red {
+    background-color: $color-red;
+  }
+
+  &--primary {
+    background-color: $color-primary;
+    transition: all 0.2s ease-out;
+
+    &:hover {
+      background-color: $color-white;
+      color: $color-primary;
+      border: 1px solid $color-primary;
+
+      & > .btn__icon {
+        filter: brightness(0) saturate(100%) invert(60%) sepia(75%) saturate(4021%) hue-rotate(351deg) brightness(100%)
+          contrast(102%);
+      }
+    }
+  }
+
+  &__icon {
+    display: inline-block;
+    max-width: 100%;
+    margin-right: 0.8rem;
+  }
+}

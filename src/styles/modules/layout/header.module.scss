@@ -1,0 +1,50 @@
+@import '../../base';
+
+.header {
+  font-family: $font-secondary;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  width: 100%;
+  background-color: $color-white;
+  padding: 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  grid-area: header;
+  display: grid;
+  grid-template-columns: 1fr minmax(min-content, 129rem) 1fr;
+  border-bottom: 0.125rem solid $color-grey-light;
+}
+
+.container {
+  grid-column: 2 / 3;
+  display: grid;
+  grid-template-columns: 1fr repeat(2, max-content);
+  grid-template-rows: minmax(min-content, 5rem) minmax(min-content, 8rem);
+  column-gap: 0.7rem;
+  row-gap: 0.125rem;
+  justify-items: end;
+  align-items: center;
+}
+
+.time-estimation {
+  justify-self: start;
+}
+
+.time-estimation > span {
+  font-weight: 600;
+}
+
+.tel {
+  font-weight: 700;
+  transition: all 0.5s;
+  &:hover,
+  &:active,
+  &:focus {
+    outline: none;
+    color: $color-primary;
+    transform: translateY(-3px);
+  }
+}
