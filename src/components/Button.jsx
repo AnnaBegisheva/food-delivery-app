@@ -2,9 +2,9 @@ import { useState } from 'react'
 import styles from '../styles/modules/components/button.module.scss'
 import classNames from 'classnames/bind'
 
-function Button({ text, isLarge, type, icon }) {
-  const cx = classNames.bind(styles)
+const cx = classNames.bind(styles)
 
+function Button({ text, isLarge, type, icon }) {
   return (
     <>
       <button
@@ -12,8 +12,8 @@ function Button({ text, isLarge, type, icon }) {
           [`btn--${type}`]: true,
           'btn--large': isLarge,
         })}>
-        {icon && <img src={icon} alt='Icon' className={cx('btn__icon')} />}
-        <span className={cx('btn__text')}>{text}</span>
+        {icon && <img src={icon} alt='Icon' className={cx('icon')} />}
+        <span className={cx('text')}>{text}</span>
       </button>
     </>
   )

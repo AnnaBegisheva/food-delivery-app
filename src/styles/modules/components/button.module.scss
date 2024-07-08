@@ -1,8 +1,8 @@
 @import '../../base';
 
 .btn {
-  color: $color-white;
-  font-family: $font-primary;
+  color: var(--color-white);
+  font-family: var(--font-primary);
   font-weight: 400;
   font-size: 1.6rem;
   text-align: center;
@@ -13,17 +13,16 @@
   display: flex;
   align-items: center;
   transition: all 0.2s;
+  border: 1px solid currentColor;
 
   &:active,
   &:focus {
     outline: none;
-    transform: translateY(-1px);
-    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.5);
+    box-shadow: 0 0.5rem 1rem rgba(var(--color-black, 0.5));
   }
 
   &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+    box-shadow: 0 1rem 2rem rgba(var(--color-black, 0.2));
   }
 
   &--large {
@@ -31,32 +30,32 @@
   }
 
   &--green {
-    background-color: $color-green;
+    background-color: var(--color-green);
   }
 
   &--red {
-    background-color: $color-red;
+    background-color: var(--color-red);
   }
 
   &--primary {
-    background-color: $color-primary;
+    background-color: var(--color-primary);
     transition: all 0.2s ease-out;
 
     &:hover {
-      background-color: $color-white;
-      color: $color-primary;
-      border: 1px solid $color-primary;
+      background-color: var(--color-white);
+      color: var(--color-primary);
+      border: 1px solid var(--color-primary);
 
-      & > .btn__icon {
+      & > .icon {
         filter: brightness(0) saturate(100%) invert(60%) sepia(75%) saturate(4021%) hue-rotate(351deg) brightness(100%)
           contrast(102%);
       }
     }
   }
+}
 
-  &__icon {
-    display: inline-block;
-    max-width: 100%;
-    margin-right: 0.8rem;
-  }
+.icon {
+  display: inline-block;
+  max-width: 100%;
+  margin-right: 0.8rem;
 }

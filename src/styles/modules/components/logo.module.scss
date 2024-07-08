@@ -4,40 +4,20 @@
   display: flex;
   align-items: center;
 
-  &__icon {
-    width: 4.8rem;
-    height: 4.8rem;
-    margin-right: 0.7rem;
-  }
-
-  &__name {
-    font-family: $font-logo;
-    font-size: 2rem;
-    line-height: 2.4rem;
-  }
-
-  &--header {
+  &--start {
     justify-self: start;
-    position: relative;
-
-    &::before {
-      content: '';
-      background-color: $color-grey-light;
-      height: 0.125rem;
-      width: 100vw;
-      position: absolute;
-      top: -2rem;
-      left: 0;
-    }
-
-    &::after {
-      content: '';
-      background-color: $color-grey-light;
-      height: 0.125rem;
-      width: 100vw;
-      position: absolute;
-      top: -2rem;
-      right: 0;
-    }
+    padding: 1.7rem 0;
   }
+}
+
+.icon {
+  width: 4.8rem;
+  height: 4.8rem;
+  margin-right: 0.7rem;
+}
+
+.name {
+  font-family: var(--font-logo);
+  font-size: 2rem;
+  line-height: 2.4rem;
 }

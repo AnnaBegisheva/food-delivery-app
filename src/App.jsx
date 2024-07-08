@@ -4,14 +4,14 @@ import classNames from 'classnames/bind'
 import Header from './components/Header'
 import Footer from './components/Footer'
 
-function App() {
-  const cx = classNames.bind(styles)
+const cx = classNames.bind(styles)
 
+function App() {
   return (
     <>
       <div className={cx('container')}>
         <Header />
-        <div className='main'></div>
+        <div className={cx('main')}></div>
         <Footer />
       </div>
     </>
