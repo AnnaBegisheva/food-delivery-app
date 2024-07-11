@@ -1,6 +1,6 @@
-import styles from '../styles/modules/components/logo.module.scss'
+import styles from './logo.module.scss'
 import classNames from 'classnames/bind'
-import logoIcon from '../assets/images/pizza-icon.svg'
+import logoIcon from '../../assets/images/logo-icon.svg'
 
 const cx = classNames.bind(styles)
 

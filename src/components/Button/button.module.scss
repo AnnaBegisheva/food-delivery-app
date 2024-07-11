@@ -1,4 +1,4 @@
-@import '../../base';
+@import '../../styles/vars';
 
 .btn {
   color: var(--color-white);
@@ -45,11 +45,6 @@
       background-color: var(--color-white);
       color: var(--color-primary);
       border: 1px solid var(--color-primary);
-
-      & > .icon {
-        filter: brightness(0) saturate(100%) invert(60%) sepia(75%) saturate(4021%) hue-rotate(351deg) brightness(100%)
-          contrast(102%);
-      }
     }
   }
 }
@@ -58,4 +53,6 @@
   display: inline-block;
   max-width: 100%;
   margin-right: 0.8rem;
+  font-size: 2.4rem;
+  line-height: 1;
 }

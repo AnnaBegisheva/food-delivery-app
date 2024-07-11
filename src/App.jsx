@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import styles from './styles/modules/layout/app.module.scss'
+import styles from './styles/app.module.scss'
 import classNames from 'classnames/bind'
-import Header from './components/Header'
-import Footer from './components/Footer'
+import Header from './components/Header/Header'
+import Footer from './components/Footer/Footer'
 
 const cx = classNames.bind(styles)
 

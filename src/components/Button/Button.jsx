@@ -1,10 +1,9 @@
-import { useState } from 'react'
-import styles from '../styles/modules/components/button.module.scss'
+import styles from './button.module.scss'
 import classNames from 'classnames/bind'
 
 const cx = classNames.bind(styles)
 
-function Button({ text, isLarge, type, icon }) {
+function Button({ text, isLarge, type, children }) {
   return (
     <>
       <button
@@ -12,8 +11,8 @@ function Button({ text, isLarge, type, icon }) {
           [`btn--${type}`]: true,
           'btn--large': isLarge,
         })}>
-        {icon && <img src={icon} alt='Icon' className={cx('icon')} />}
-        <span className={cx('text')}>{text}</span>
+        <span className={cx('icon')}>{children}</span>
+        <p className={cx('text')}>{text}</p>
       </button>
     </>
   )
