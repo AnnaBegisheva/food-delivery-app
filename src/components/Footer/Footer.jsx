@@ -1,6 +1,8 @@
 import styles from './footer.module.scss'
 import classNames from 'classnames/bind'
 import Logo from '../Logo/Logo'
+import { OTHER_COMPANY } from '../../constants/index'
+import { OTHER_HELP } from '../../constants/index'
 
 const cx = classNames.bind(styles)
 
@@ -18,30 +20,22 @@ function Footer() {
             <section className={cx('section')}>
               <h4 className={cx('title')}>Компания</h4>
               <ul className={cx('list')}>
-                <li className={cx('item')}>
-                  <a href='#'>О нас</a>
-                </li>
-                <li className={cx('item')}>
-                  <a href='#'>Пользовательское соглашение</a>
-                </li>
-                <li className={cx('item')}>
-                  <a href='#'>Политика конфиденциальности</a>
-                </li>
+                {OTHER_COMPANY.map((item) => (
+                  <li className={cx('item')} key={item.value}>
+                    <a href={item.link}>{item.value}</a>
+                  </li>
+                ))}
               </ul>
             </section>
 
             <section className={cx('section')}>
               <h4 className={cx('title')}>Помощь</h4>
               <ul className={cx('list')}>
-                <li className={cx('item')}>
-                  <a href='#'>Ресторан</a>
-                </li>
-                <li className={cx('item')}>
-                  <a href='#'>Поддержка</a>
-                </li>
-                <li className={cx('item')}>
-                  <a href='#'>Отследить заказ</a>
-                </li>
+                {OTHER_HELP.map((item) => (
+                  <li className={cx('item')} key={item.value}>
+                    <a href={item.link}>{item.value}</a>
+                  </li>
+                ))}
               </ul>
             </section>
           </nav>

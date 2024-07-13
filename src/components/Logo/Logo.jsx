@@ -4,10 +4,10 @@ import logoIcon from '../../assets/images/logo-icon.svg'
 
 const cx = classNames.bind(styles)
 
-function Logo({ start }) {
+function Logo() {
   return (
     <>
-      <div className={cx('logo-box', { 'logo-box--start': start })}>
+      <div className={cx('logo-box')}>
         <img src={logoIcon} alt='Logo' className={cx('icon')} />
         <span className={cx('name')}>Super Pizza</span>
       </div>

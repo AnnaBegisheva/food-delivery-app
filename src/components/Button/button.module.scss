@@ -18,11 +18,12 @@
   &:active,
   &:focus {
     outline: none;
-    box-shadow: 0 0.5rem 1rem rgba(var(--color-black, 0.5));
+    border: none;
+    box-shadow: var(--shadow-intense);
   }
 
   &:hover {
-    box-shadow: 0 1rem 2rem rgba(var(--color-black, 0.2));
+    box-shadow: var(--shadow-primary);
   }
 
   &--large {

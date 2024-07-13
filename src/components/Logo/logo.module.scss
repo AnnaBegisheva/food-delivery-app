@@ -3,11 +3,7 @@
 .logo-box {
   display: flex;
   align-items: center;
-
-  &--start {
-    justify-self: start;
-    padding: 1.7rem 0;
-  }
+  margin-right: 2rem;
 }
 
 .icon {

@@ -4,11 +4,14 @@
   --color-primary-light: rgba(255, 238, 226, 1);
   --color-red: rgba(226, 53, 53, 1);
   --color-green: rgba(29, 201, 77, 1);
-  --color-black: rgba(25, 25, 25, 1);
+  --color-black: rgb(25, 25, 25);
   --color-white: rgba(255, 255, 255, 1);
   --color-background: rgba(249, 249, 249, 1);
   --color-grey-light: rgba(240, 240, 240, 1);
-  --color-text-grey: rgba(165, 165, 165, 1);
+  --color-text-grey: rgb(166, 166, 166);
+
+  --shadow-intense: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+  --shadow-primary: 0 1rem 2rem rgba(0, 0, 0, 0.2);
 
   //FONTS
   --font-primary: 'Roboto', sans-serif;

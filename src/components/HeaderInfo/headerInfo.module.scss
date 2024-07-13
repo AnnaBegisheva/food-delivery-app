@@ -1,19 +1,14 @@
-@import '../../styles/vars';
-
-.header {
+.info {
   font-family: var(--font-secondary);
   font-weight: 400;
   font-size: 1.4rem;
   line-height: 1.8rem;
   width: 100%;
   background-color: var(--color-white);
-  padding: 1rem;
-  position: sticky;
-  top: 0;
+  padding: 1.4rem 0;
 
-  grid-area: header;
+  grid-area: info;
   display: grid;
-  justify-content: end;
   grid-template-columns: 1fr minmax(min-content, 129rem) 1fr;
   border-bottom: 0.125rem solid var(--color-grey-light);
 }
@@ -23,11 +18,27 @@
   display: grid;
   grid-template-columns: 1fr repeat(2, max-content);
   column-gap: 0.7rem;
+  justify-items: end;
   align-items: center;
 }
 
-.start {
-  display: flex;
-  align-items: center;
-  gap: 6rem;
+.time-estimation {
+  justify-self: start;
+}
+
+.delivery-time {
+  font-weight: 600;
+}
+
+.tel {
+  font-weight: 700;
+  transition: all 0.2s;
+
+  &:hover,
+  &:active,
+  &:focus {
+    outline: none;
+    color: var(--color-primary);
+    transform: translateY(-3px);
+  }
 }

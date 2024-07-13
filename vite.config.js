@@ -5,15 +5,6 @@ import svgr from "vite-plugin-svgr";
 const svgoOptions = {
   multipass: true,
   plugins: [
-    // ensuring viewbox isn't removed.
-    {
-      name: 'preset-default',
-      params: {
-        overrides: {
-          removeViewBox: false,
-        }
-      }
-    },
     {
       // setting fill attribute to "currentColor"
       name: 'convertColors',

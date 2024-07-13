@@ -29,16 +29,17 @@ a {
   background-color: var(--color-background);
   display: grid;
   grid-template-columns: minmax(1rem, 1fr) minmax(min-content, 129rem) minmax(1rem, 1fr);
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: auto auto 1fr auto;
   grid-template-areas:
+    'info info info'
     'header header header'
     '. main .'
     'footer footer footer';
 
-  min-height: 100vh;
-  overflow: hidden;
+  min-height: 200vh;
 }
 
 .main {
   grid-area: main;
+  padding-block: 3rem;
 }
