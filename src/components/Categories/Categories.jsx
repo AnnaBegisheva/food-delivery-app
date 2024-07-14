@@ -64,20 +64,19 @@ const defaultValue = {
 }
 const options = [defaultValue, ...OTHER_COMPANY, ...OTHER_HELP]
 
-function Categories() {
-  const [visible, setVisible] = useState(true)
+function Categories({ isVisible }) {
   const [selected, setSelected] = useState(defaultValue)
-
-  window.addEventListener('scroll', function () {
-    const categoriesOffset = document.getElementById('categories').offsetTop
-    window.scrollY > categoriesOffset ? setVisible(false) : setVisible(true)
-  })
 
   const handleChange = (selectedOption) => {
     setSelected(selectedOption)
   }
 
   const customStyles = {
+    menu: (provided) => ({
+      ...provided,
+      width: '20rem',
+    }),
+
     option: (defaultStyles, state) => ({
       ...defaultStyles,
       color: state.isFocused ? '#fff' : '#000',
@@ -91,43 +90,32 @@ function Categories() {
       border: 'none',
       boxShadow: 'none',
       cursor: 'pointer',
-      fontSize: '1.6rem',
-      lineHeight: '2.2rem',
-      color: '191919',
       fontFamily: 'Roboto',
       fontSize: '1.6rem',
       maxWidth: '20rem',
     }),
 
-    menu: (provided) => ({
+    indicatorSeparator: () => ({ display: 'none' }),
+    dropdownIndicator: (provided) => ({
       ...provided,
-      width: '20rem',
-      overflow: 'hidden',
+      color: '#191919',
     }),
   }
 
-  const customTheme = (theme) => ({
-    ...theme,
-    border: '1px solid #a5a5a5',
-    borderRadius: 12,
-    padding: '5px 20px',
-    width: '20rem',
-  })
-
   return (
     <>
-      <div className={cx('container', { 'container-icons': visible })} id='categories'>
+      <div className={cx('container', { 'container-icons': isVisible })} id='categories'>
         {categories &&
           categories
             .sort((a, b) => (a.order > b.order ? 1 : -1)) // later sort in fetch function
             .map((category) => (
-              <a href='#' className={cx('btn', { 'icon-box': visible })} key={category.id}>
-                {visible && <IconHandler code={category.code} />}
+              <a href='#' className={cx('btn', { 'icon-box': isVisible })} key={category.id}>
+                {isVisible && <IconHandler code={category.code} />}
                 <span>{category.name}</span>
               </a>
             ))}
 
-        {!visible && (
+        {!isVisible && (
           <Select
             className={cx('select')}
             options={options}
@@ -135,7 +123,7 @@ function Categories() {
             defaultValue={selected}
             autosize={true}
             styles={customStyles}
-            theme={customTheme}
+            menuPortalTarget={document.body}
           />
         )}
       </div>

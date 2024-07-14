@@ -10,14 +10,8 @@ import { RUB_SYMBOL } from '../../constants/index.js'
 
 const cx = classNames.bind(styles)
 
-function Header() {
+function Header({ isSticky }) {
   const [sum, setSum] = useState(0)
-  const [isFixed, setIsFixed] = useState(false)
-
-  window.addEventListener('scroll', function () {
-    const categoriesOffset = document.getElementById('categories').offsetTop
-    window.scrollY > categoriesOffset ? setIsFixed(true) : setIsFixed(false)
-  })
 
   return (
     <>
@@ -25,7 +19,7 @@ function Header() {
         <div className={cx('container')}>
           <div className={cx('start')}>
             <Logo />
-            {isFixed && <Categories />}
+            {isSticky && <Categories />}
           </div>
           <Button text={`${sum} ${RUB_SYMBOL}`} type={'primary'}>
             <CartIcon />

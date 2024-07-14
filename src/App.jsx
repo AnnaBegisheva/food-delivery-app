@@ -9,14 +9,19 @@ import HeaderInfo from './components/HeaderInfo/HeaderInfo'
 const cx = classNames.bind(styles)
 
 function App() {
+  const [isSticky, setIsSticky] = useState(false)
+
+  window.addEventListener('scroll', function () {
+    const categoriesOffset = document.getElementById('categories').offsetTop
+    setIsSticky(window.scrollY > categoriesOffset)
+  })
+
   return (
     <>
       <div className={cx('container')}>
         <HeaderInfo />
-        <Header />
-        <div className={cx('main')}>
-          <Categories />
-        </div>
+        <Header isSticky={isSticky} />
+        <div className={cx('main')}>{!isSticky && <Categories isVisible={!isSticky} />}</div>
         <Footer />
       </div>
     </>
