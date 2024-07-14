@@ -1,0 +1,58 @@
+@import '../../styles/vars';
+
+.btn {
+  color: var(--color-white);
+  font-family: var(--font-primary);
+  font-weight: 400;
+  font-size: 1.6rem;
+  text-align: center;
+  border: none;
+  border-radius: 1.3rem;
+  padding: 1.3rem 2.4rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s;
+  border: 1px solid currentColor;
+
+  &:active,
+  &:focus {
+    outline: none;
+    box-shadow: 0 0.5rem 1rem rgba(var(--color-black, 0.5));
+  }
+
+  &:hover {
+    box-shadow: 0 1rem 2rem rgba(var(--color-black, 0.2));
+  }
+
+  &--large {
+    padding-inline: 4rem;
+  }
+
+  &--green {
+    background-color: var(--color-green);
+  }
+
+  &--red {
+    background-color: var(--color-red);
+  }
+
+  &--primary {
+    background-color: var(--color-primary);
+    transition: all 0.2s ease-out;
+
+    &:hover {
+      background-color: var(--color-white);
+      color: var(--color-primary);
+      border: 1px solid var(--color-primary);
+    }
+  }
+}
+
+.icon {
+  display: inline-block;
+  max-width: 100%;
+  margin-right: 0.8rem;
+  font-size: 2.4rem;
+  line-height: 1;
+}

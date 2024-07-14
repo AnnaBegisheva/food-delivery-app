@@ -1,0 +1,23 @@
+@import '../../styles/vars';
+
+.logo-box {
+  display: flex;
+  align-items: center;
+
+  &--start {
+    justify-self: start;
+    padding: 1.7rem 0;
+  }
+}
+
+.icon {
+  width: 4.8rem;
+  height: 4.8rem;
+  margin-right: 0.7rem;
+}
+
+.name {
+  font-family: var(--font-logo);
+  font-size: 2rem;
+  line-height: 2.4rem;
+}
