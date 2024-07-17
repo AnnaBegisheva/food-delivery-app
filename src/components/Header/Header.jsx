@@ -15,18 +15,19 @@ function Header({ isSticky }) {
 
   return (
     <>
-      <header className={cx('header')}>
+      <header className={cx('header', { sticky: isSticky })}>
         <div className={cx('container')}>
           <div className={cx('start')}>
             <Logo />
             {isSticky && <Categories />}
           </div>
-          <Button text={`${sum} ${RUB_SYMBOL}`} type={'primary'}>
-            <CartIcon />
-          </Button>
-          <Button text={`Войти`} type={'primary'}>
-            <AccountIcon />
-          </Button>
+          <Button text={`${sum} ${RUB_SYMBOL}`} type={'primary'} isSmall={true} icon={<CartIcon />} />
+          <Button
+            text={`Войти`}
+            type={'primary'}
+            isSmall={true}
+            icon={<AccountIcon height={'20px'} width={'16px'} />}
+          />
         </div>
       </header>
     </>

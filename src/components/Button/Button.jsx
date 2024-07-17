@@ -3,15 +3,15 @@ import classNames from 'classnames/bind'
 
 const cx = classNames.bind(styles)
 
-function Button({ text, isLarge, type, children }) {
+function Button({ text, type, isLong, isSmall, icon }) {
   return (
     <>
       <button
-        className={cx('btn', {
-          [`btn--${type}`]: true,
-          'btn--large': isLarge,
+        className={cx('btn', `${type}`, {
+          long: isLong,
+          small: isSmall,
         })}>
-        <span className={cx('icon')}>{children}</span>
+        {icon && <span className={cx('icon')}>{icon}</span>}
         <p className={cx('text')}>{text}</p>
       </button>
     </>

@@ -10,14 +10,21 @@
 
 html {
   box-sizing: border-box;
-  font-size: 62.5%; // 1rem = 10px; 10px / 16px = 62.5%;
 }
 
 body {
   font-family: var(--font-primary);
   color: var(--color-black);
+  font-size: 1rem;
   font-weight: 400;
-  line-height: 1.6;
+  line-height: 1.375;
+}
+
+input,
+textarea,
+button {
+  font-family: inherit;
+  font-size: inherit;
 }
 
 a {
@@ -27,19 +34,15 @@ a {
 
 .container {
   background-color: var(--color-background);
-  display: grid;
-  grid-template-columns: minmax(1rem, 1fr) minmax(min-content, 129rem) minmax(1rem, 1fr);
-  grid-template-rows: auto auto 1fr auto;
-  grid-template-areas:
-    'info info info'
-    'header header header'
-    '. main .'
-    'footer footer footer';
-
-  min-height: 200vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 150vh;
 }
 
 .main {
-  grid-area: main;
-  padding-block: 3rem;
+  max-width: var(--container);
+  width: 100%;
+  flex: 1;
+  padding-block: 1.875rem;
 }
