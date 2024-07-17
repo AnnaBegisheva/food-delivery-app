@@ -52,3 +52,64 @@
   margin-bottom: 0.5rem;
   color: var(--color-primary);
 }
+
+.other {
+  position: relative;
+  background-color: var(--color-white);
+  color: var(--color-black);
+  border: none;
+  box-shadow: none;
+  cursor: pointer;
+
+  &:active,
+  &:focus {
+    outline: none;
+    border: none;
+  }
+}
+
+.arrow {
+  vertical-align: middle;
+  line-height: 0.5;
+  margin-left: 12px;
+}
+
+.list {
+  list-style: none;
+  padding: 20px;
+}
+
+.item {
+  &:not(:last-child) {
+    margin-bottom: 16px;
+  }
+
+  & a:link,
+  & a:visited {
+    display: block;
+    transition: all 0.2s;
+  }
+
+  & a:hover,
+  & a:active,
+  & a:focus {
+    outline: none;
+    color: var(--color-primary);
+    transform: translateY(-3px);
+  }
+}
+
+.dropdown {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-light-grey);
+  border-radius: 12px;
+  box-shadow: 0px 2px 8px 0px rgba(25, 25, 25, 0.1);
+}
+
+.tooltip {
+  height: 8px;
+  width: 16px;
+  top: -8px;
+  background-color: var(--color-white);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}

@@ -8,6 +8,7 @@ export const OTHER_COMPANY = [
 
 export const OTHER_HELP = [
     { value: 'Ресторан', link: '#' },
+    { value: 'Контакты', link: '#' },
     { value: 'Поддержка', link: '#' },
     { value: 'Отследить заказ', link: '#' },
 ];

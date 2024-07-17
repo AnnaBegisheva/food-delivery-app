@@ -1,7 +1,9 @@
-import { useState, forwardRef, useEffect } from 'react'
+import { useState, forwardRef, useEffect, useRef } from 'react'
 import styles from './categories.module.scss'
 import classNames from 'classnames/bind'
 import IconHandler from '../../handlers/icon_handler'
+import List from '../List/List'
+import { usePopper } from 'react-popper'
 import { OTHER_COMPANY } from '../../constants/index'
 import { OTHER_HELP } from '../../constants/index'
 
@@ -59,11 +61,56 @@ const categories = [
 const cx = classNames.bind(styles)
 
 const Categories = forwardRef(({ isVisible }, ref) => {
-  const [selected, setSelected] = useState('')
+  const referenceRef = useRef(null)
+  const popperRef = useRef(null)
+  const [arrowElement, setArrowElement] = useState(null)
+  const [visible, setVisibility] = useState(false)
+  const otherItems = [...OTHER_COMPANY, ...OTHER_HELP]
 
-  const handleChange = (selectedOption) => {
-    setSelected(selectedOption)
+  const { styles, attributes } = usePopper(referenceRef.current, popperRef.current, {
+    placement: 'bottom',
+    modifiers: [
+      {
+        name: 'offset',
+        enabled: true,
+        options: {
+          offset: [0, 40],
+        },
+      },
+      { name: 'arrow', options: { element: arrowElement, padding: 8 } },
+    ],
+  })
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleDocumentClick)
+    return () => {
+      document.removeEventListener('mousedown', handleDocumentClick)
+    }
+  }, [])
+
+  function handleDocumentClick(event) {
+    if (referenceRef.current.contains(event.target)) {
+      return
+    }
+    setVisibility(false)
   }
+
+  //   const [categories, setCategories] = useState([])
+
+  //   useEffect(() => {
+  //     const myHeaders = new Headers()
+  //     myHeaders.append('accept', 'application/json')
+
+  //     const requestOptions = {
+  //       method: 'GET',
+  //       headers: myHeaders,
+  //     }
+  //     fetch('https://x8ki-letl-twmt.n7.xano.io/api:6AjmqRV7/categories', requestOptions)
+  //       .then((response) => response.json())
+  //       .then((result) => setCategories(result))
+  //       .then((result) => console.log(result))
+  //       .catch((error) => console.error(error))
+  //   }, [])
 
   return (
     <>
@@ -77,6 +124,26 @@ const Categories = forwardRef(({ isVisible }, ref) => {
                 <span>{category.name}</span>
               </a>
             ))}
+
+        {!isVisible && (
+          <>
+            <button className={cx('other')} type='button' ref={referenceRef} onClick={() => setVisibility(!visible)}>
+              <p className={cx('text')}>
+                Другое{' '}
+                <span className={cx('arrow')}>
+                  <IconHandler code={'arrow'} />
+                </span>
+              </p>
+            </button>
+
+            {visible && (
+              <div ref={popperRef} style={styles.popper} {...attributes.popper} className={cx('dropdown')}>
+                <div ref={setArrowElement} style={styles.arrow} className={cx('tooltip')}></div>
+                <List items={otherItems} listClass={cx('list')} itemClass={cx('item')} />
+              </div>
+            )}
+          </>
+        )}
       </div>
     </>
   )

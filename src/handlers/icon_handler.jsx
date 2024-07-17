@@ -10,6 +10,7 @@ import Location from '../assets/images/location.svg?react'
 import Facebook from '../assets/images/facebook.svg?react'
 import Instagram from '../assets/images/instagram.svg?react'
 import Phone from '../assets/images/phone.svg?react'
+import Arrow from '../assets/images/arrow.svg?react'
 
 const iconsMap = new Map([
   ['promos', Promos],
@@ -24,6 +25,7 @@ const iconsMap = new Map([
   ['facebook', Facebook],
   ['instagram', Instagram],
   ['phone', Phone],
+  ['arrow', Arrow],
 ])
 
 function IconHandler({ code }) {
