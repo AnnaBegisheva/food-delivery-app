@@ -3,21 +3,17 @@
 .logo-box {
   display: flex;
   align-items: center;
-
-  &--start {
-    justify-self: start;
-    padding: 1.7rem 0;
-  }
 }
 
 .icon {
-  width: 4.8rem;
-  height: 4.8rem;
-  margin-right: 0.7rem;
+  width: 3rem;
+  height: 3rem;
+  margin-right: 8px;
 }
 
 .name {
   font-family: var(--font-logo);
-  font-size: 2rem;
-  line-height: 2.4rem;
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.2;
 }

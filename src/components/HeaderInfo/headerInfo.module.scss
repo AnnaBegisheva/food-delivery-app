@@ -1,0 +1,43 @@
+.info {
+  font-family: var(--font-secondary);
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.3;
+  width: 100%;
+  background-color: var(--color-white);
+  padding: 1em;
+
+  display: grid;
+  grid-template-columns: 1fr minmax(min-content, var(--container)) 1fr;
+  border-bottom: 1.25px solid var(--color-grey-light);
+}
+
+.container {
+  grid-column: 2 / 3;
+  display: grid;
+  grid-template-columns: 1fr repeat(2, max-content);
+  column-gap: 12px;
+  justify-items: end;
+  align-items: center;
+}
+
+.time-estimation {
+  justify-self: start;
+}
+
+.delivery-time {
+  font-weight: 600;
+}
+
+.tel {
+  font-weight: 700;
+  transition: all 0.2s;
+
+  &:hover,
+  &:active,
+  &:focus {
+    outline: none;
+    color: var(--color-primary);
+    transform: translateY(-3px);
+  }
+}
