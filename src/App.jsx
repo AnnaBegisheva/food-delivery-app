@@ -5,6 +5,7 @@ import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
 import Categories from './components/Categories/Categories'
 import HeaderInfo from './components/HeaderInfo/HeaderInfo'
+import Search from './components/Search/Search'
 
 const cx = classNames.bind(styles)
 
@@ -49,6 +50,7 @@ function App() {
         <Header isSticky={isSticky} />
         <div className={cx('main')}>
           <Categories isVisible={!isSticky} ref={categoriesRef} />
+          <Search />
         </div>
         <Footer />
       </div>

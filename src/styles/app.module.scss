@@ -44,5 +44,8 @@ a {
   max-width: var(--container);
   width: 100%;
   flex: 1;
-  padding-block: 1.875rem;
+  padding-block: 1.875em;
+  display: flex;
+  flex-direction: column;
+  gap: 1.875em;
 }
