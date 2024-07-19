@@ -21,11 +21,11 @@ function Header({ isSticky }) {
             <Logo />
             {isSticky && <Categories />}
           </div>
-          <Button text={`${sum} ${RUB_SYMBOL}`} type={'primary'} isSmall={true} icon={<CartIcon />} />
+          <Button text={`${sum} ${RUB_SYMBOL}`} type={'primary'} size={'small'} icon={<CartIcon />} />
           <Button
             text={`Войти`}
             type={'primary'}
-            isSmall={true}
+            size={'small'}
             icon={<AccountIcon height={'20px'} width={'16px'} />}
           />
         </div>

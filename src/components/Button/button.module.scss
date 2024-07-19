@@ -32,20 +32,24 @@
   padding-inline: 2.5rem;
 }
 
-.green {
-  background-color: var(--color-green);
-}
-
-.red {
-  background-color: var(--color-red);
-}
-
 .primary {
   background-color: var(--color-primary);
   transition: all 0.2s ease-out;
 
   &:hover {
     background-color: var(--color-white);
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+  }
+}
+
+.secondary {
+  border-radius: 6px;
+  background-color: var(--color-white);
+  color: var(--color-black);
+  border: 1px solid var(--color-grey-light);
+
+  &:hover {
     color: var(--color-primary);
     border: 1px solid var(--color-primary);
   }

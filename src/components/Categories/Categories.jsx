@@ -60,7 +60,7 @@ const categories = [
 
 const cx = classNames.bind(styles)
 
-const Categories = forwardRef(({ isVisible }, ref) => {
+const Categories = forwardRef(({ isIcons }, ref) => {
   const referenceRef = useRef(null)
   const popperRef = useRef(null)
   const [arrowElement, setArrowElement] = useState(null)
@@ -89,28 +89,11 @@ const Categories = forwardRef(({ isVisible }, ref) => {
   }, [])
 
   function handleDocumentClick(event) {
-    if (referenceRef.current.contains(event.target)) {
+    if (!isIcons && referenceRef.current.contains(event.target)) {
       return
     }
     setVisibility(false)
   }
-
-  //   const [categories, setCategories] = useState([])
-
-  //   useEffect(() => {
-  //     const myHeaders = new Headers()
-  //     myHeaders.append('accept', 'application/json')
-
-  //     const requestOptions = {
-  //       method: 'GET',
-  //       headers: myHeaders,
-  //     }
-  //     fetch('https://x8ki-letl-twmt.n7.xano.io/api:6AjmqRV7/categories', requestOptions)
-  //       .then((response) => response.json())
-  //       .then((result) => setCategories(result))
-  //       .then((result) => console.log(result))
-  //       .catch((error) => console.error(error))
-  //   }, [])
 
   return (
     <>
@@ -119,13 +102,13 @@ const Categories = forwardRef(({ isVisible }, ref) => {
           categories
             .sort((a, b) => (a.order > b.order ? 1 : -1)) // later sort in fetch function
             .map((category) => (
-              <a href='#' className={cx('btn', { 'icon-box': isVisible })} key={category.id}>
-                {category.code && isVisible && <IconHandler code={category.code} />}
+              <a href='#' className={cx('btn', { 'icon-box': isIcons })} key={category.id}>
+                {category.code && isIcons && <IconHandler code={category.code} />}
                 <span>{category.name}</span>
               </a>
             ))}
 
-        {!isVisible && (
+        {!isIcons && (
           <>
             <button className={cx('other')} type='button' ref={referenceRef} onClick={() => setVisibility(!visible)}>
               <p className={cx('text')}>

@@ -16,7 +16,7 @@ function Search() {
           <Icon className={cx('icon')} />
           <input type='search' name='checkAddress' className={cx('input')} placeholder='Адрес' />
         </div>
-        <Button text={`Проверить`} type={'primary'} isLong={true} />
+        <Button text={`Проверить`} type={'primary'} size={'long'} />
       </div>
     </>
   )
