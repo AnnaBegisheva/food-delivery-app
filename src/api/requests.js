@@ -1,17 +1,24 @@
+
 const baseURL = 'https://x8ki-letl-twmt.n7.xano.io/api:6AjmqRV7/';
 
-export const getData = (path, setData) => {
+export const getData = (path) => {
     const url = `${baseURL}${path}`
-    const myHeaders = new Headers()
-    myHeaders.append('accept', 'application/json')
 
-    const requestOptions = {
+    return fetch(url, {
         method: 'GET',
-        headers: myHeaders,
-    }
-    fetch(url, requestOptions)
-        .then((response) => response.json())
-        .then((result) => result.sort((a, b) => (a.id > b.id ? 1 : -1)))
-        .then((data) => setData(data))
-        .catch((error) => console.error(error))
+        headers: {
+            'Accept': 'application/json',
+            "Content-Type": "application/json",
+        }
+    })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json()
+        })
+        .catch((error) => {
+            console.error('Fetch error:', error);
+            throw error;
+        })
 }

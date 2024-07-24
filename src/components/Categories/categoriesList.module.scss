@@ -1,4 +1,4 @@
-.container {
+.categories {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -6,7 +6,7 @@
   gap: 0.5rem;
 }
 
-.btn {
+.link {
   background: none;
   border: none;
   margin-right: 1.625rem;
@@ -16,40 +16,6 @@
     outline: none;
     color: var(--color-primary);
   }
-}
-
-.icon-box {
-  font-size: 1.125rem;
-  line-height: 1.3;
-  background-color: var(--color-white);
-  border: 1px solid var(--color-grey-light);
-  border-radius: 12px;
-  padding-block: 1.25rem;
-  margin: 0;
-  flex: 0 0 8.4375rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  &:focus {
-    box-shadow: var(--shadow-primary);
-  }
-
-  &:hover {
-    color: var(--color-red);
-
-    & svg {
-      color: inherit;
-    }
-  }
-}
-
-.icon-box svg {
-  display: inline-block;
-  width: 2rem;
-  height: 2rem;
-  margin-bottom: 0.5rem;
-  color: var(--color-primary);
 }
 
 .other {

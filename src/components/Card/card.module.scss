@@ -1,9 +1,9 @@
-.container {
+.card {
   max-width: 300px;
   border: 1px solid var(--color-grey-light);
   border-radius: 12px;
   background-color: var(--color-white);
-  padding-bottom: 1.25rem;
+  padding-bottom: 20px;
   overflow: hidden;
   position: relative;
   display: flex;
@@ -25,14 +25,14 @@
 
 .description {
   flex: 1;
-  padding: 1rem 1.25rem;
+  padding: 16px 20px;
 }
 
 .title {
   font-size: 1.125rem;
   font-weight: 600;
   line-height: 1.375;
-  padding-bottom: 0.75rem;
+  padding-bottom: 12px;
 }
 
 .text {
@@ -44,7 +44,7 @@
 }
 
 .order-box {
-  padding-inline: 1.25rem;
+  padding-inline: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;

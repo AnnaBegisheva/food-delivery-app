@@ -1,62 +1,52 @@
 import { useEffect, useRef, useState } from 'react'
+import { useIntersectionObserver } from './hooks/useIntersectionObserver'
+import { getData } from './api/requests'
 import styles from './styles/app.module.scss'
 import classNames from 'classnames/bind'
 import Header from './components/Header/Header'
 import Footer from './components/Footer/Footer'
-import Categories from './components/Categories/Categories'
 import HeaderInfo from './components/HeaderInfo/HeaderInfo'
 import Search from './components/Search/Search'
 import Products from './components/Products/Products'
+import CategoriesIcons from './components/Categories/CategoriesIcons'
 
 const cx = classNames.bind(styles)
 
 function App() {
   const categoriesRef = useRef(null)
-  const [isSticky, setIsSticky] = useState(false)
-
-  // to perform {!isSticky && <Categories isVisible={!isSticky}
-  // window.addEventListener(
-  //   'scroll',
-  //   function () {
-  //     const categoriesOffset = document.getElementById('categories').offsetTop
-  //     setIsSticky(window.scrollY > categoriesOffset)
-  //   },
-  //   { passive: true }, // is needed for better performance
-  // )
-
-  const callback = (entries) => {
-    const [entry] = entries
-    setIsSticky(!entry.isIntersecting)
-  }
-
-  const options = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0,
-  }
+  const isSticky = useIntersectionObserver(categoriesRef)
+  const [categories, setCategories] = useState([])
+  const [products, setProducts] = useState([])
+  const [error, setError] = useState(false)
 
   useEffect(() => {
-    const observer = new IntersectionObserver(callback, options)
-    if (categoriesRef.current) observer.observe(categoriesRef.current)
-
-    return () => {
-      if (categoriesRef.current) observer.unobserve(categoriesRef.current)
-    }
-  })
+    let requests = [getData('categories'), getData('products')]
+    Promise.all(requests)
+      .then(([categories, products]) => {
+        setCategories(categories)
+        setProducts(products)
+      })
+      .catch((error) => {
+        setError(true)
+        console.error('Ошибка при выполнении запросов:', error)
+      })
+  }, [])
 
   return (
-    <>
-      <div className={cx('container')}>
-        <HeaderInfo />
-        <Header isSticky={isSticky} />
+    <div className={cx('container')}>
+      <HeaderInfo />
+      <Header isSticky={isSticky} categories={categories} />
+      {error ? (
+        <div className={cx('main', 'error')}> Что-то пошло не так... Попробуйте позже</div>
+      ) : (
         <div className={cx('main')}>
-          <Categories isIcons={!isSticky} ref={categoriesRef} />
+          <CategoriesIcons categories={categories} ref={categoriesRef} />
           <Search />
-          <Products />
+          <Products categories={categories} products={products} />
         </div>
-        <Footer />
-      </div>
-    </>
+      )}
+      <Footer />
+    </div>
   )
 }
 
