@@ -22,3 +22,26 @@ export const getData = (path) => {
             throw error;
         })
 }
+
+export const postData = (path, data) => {
+    const url = `${baseURL}${path}`
+
+    return fetch(url, {
+        method: 'POST',
+        body: data,
+        headers: {
+            'Accept': 'application/json',
+            "Content-Type": "application/json",
+        }
+    })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json()
+        })
+        .catch((error) => {
+            console.error('Fetch error:', error);
+            throw error;
+        })
+}
