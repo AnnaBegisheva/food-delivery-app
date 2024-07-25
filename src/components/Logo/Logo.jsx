@@ -6,12 +6,10 @@ const cx = classNames.bind(styles)
 
 function Logo() {
   return (
-    <>
-      <div className={cx('logo-box')}>
-        <img src={logoIcon} alt='Logo' className={cx('icon')} />
-        <span className={cx('name')}>Super Pizza</span>
-      </div>
-    </>
+    <div className={cx('logo-box')}>
+      <img src={logoIcon} alt='Logo' className={cx('icon')} />
+      <span className={cx('name')}>Super Pizza</span>
+    </div>
   )
 }
 
