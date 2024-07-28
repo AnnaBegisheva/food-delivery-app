@@ -20,8 +20,8 @@ const Header = ({ isSticky, categories }) => {
           <Logo />
           {isSticky && <CategoriesList categories={categories} />}
         </div>
-        <Button text={`${sum} ${RUB_SYMBOL}`} type='primary' size='small' icon={<CartIcon />} />
-        <Button text='Войти' type='primary' size='small' icon={<AccountIcon height='20px' width='16px' />} />
+        <Button text={`${sum} ${RUB_SYMBOL}`} color='primary' size='small' icon={<CartIcon />} />
+        <Button text='Войти' color='primary' size='small' icon={<AccountIcon height='20px' width='16px' />} />
       </div>
     </header>
   )

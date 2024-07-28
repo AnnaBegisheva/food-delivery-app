@@ -22,7 +22,7 @@ function Card({ product }) {
         <div className={cx('price')}>
           {product.categories_id === 1 ? 'от' : ''} {product.price} {RUB_SYMBOL}
         </div>
-        <Button text='Выбрать' type='primary' size='long' />
+        <Button text='Выбрать' color='primary' size='long' />
       </div>
     </div>
   )

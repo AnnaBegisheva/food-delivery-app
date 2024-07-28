@@ -4,9 +4,9 @@ import classNames from 'classnames/bind'
 
 const cx = classNames.bind(styles)
 
-const Button = forwardRef(({ text, type, size, icon, buttonType }, ref) => {
+const Button = forwardRef(({ text, color, size, icon, type, onClick }, ref) => {
   return (
-    <button className={cx('btn', type, size)} type={buttonType} ref={ref}>
+    <button className={cx('btn', color, size)} type={type} ref={ref} onClick={onClick}>
       {icon && <span className={cx('icon')}>{icon}</span>}
       <p className={cx('text')}>{text}</p>
     </button>

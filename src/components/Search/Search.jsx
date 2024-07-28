@@ -42,7 +42,7 @@ const Search = () => {
           <Icon className={cx('icon')} />
           <input ref={addressRef} type='search' name='checkAddress' className={cx('input')} placeholder='Адрес' />
         </div>
-        <Button text='Проверить' type='primary' size='long' buttonType='submit' ref={referenceRef} />
+        <Button text='Проверить' color='primary' size='long' type='submit' ref={referenceRef} />
       </form>
 
       {visible && (
