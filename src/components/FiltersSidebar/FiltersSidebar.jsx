@@ -1,6 +1,6 @@
 import { useState } from "react"
 import Button from "../Button/Button"
-import Sidebar from "../Sidebar/Sidebar"
+import Sidebar from "../Modal/Modal"
 import FilterIcon from "../../assets/images/filter.svg?react"
 import Filters from "../Filters/Filters"
 
@@ -19,7 +19,7 @@ const FiltersSidebar = () => {
         }}
       />
       {isSidebarVisible && (
-        <Sidebar isVisible={isSidebarVisible} setIsVisible={setIsSidebarVisible}>
+        <Sidebar isVisible={isSidebarVisible} setIsVisible={setIsSidebarVisible} type="sidebar">
           <Filters />
         </Sidebar>
       )}

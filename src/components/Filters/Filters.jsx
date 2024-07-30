@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react"
+import { useState } from "react"
 import styles from "./filters.module.scss"
 import classNames from "classnames/bind"
 import Button from "../Button/Button"
