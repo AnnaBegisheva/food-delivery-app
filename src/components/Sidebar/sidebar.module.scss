@@ -17,6 +17,13 @@
   position: relative;
 }
 
-.overflow-y-hidden {
-  overflow-y: hidden;
+.icon {
+  cursor: pointer;
+  position: absolute;
+  top: 40px;
+  right: 30px;
+
+  &:hover {
+    color: var(--color-primary);
+  }
 }

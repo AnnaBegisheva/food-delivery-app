@@ -1,21 +1,25 @@
-import { useEffect } from 'react'
-import styles from './sidebar.module.scss'
-import classNames from 'classnames/bind'
+import styles from "./sidebar.module.scss"
+import classNames from "classnames/bind"
+import CloseIcon from "../../assets/images/x.svg?react"
+import useBodyScrollLock from "../../hooks/useBodyScrollLock"
 
 const cx = classNames.bind(styles)
 
-function Sidebar({ children }) {
-  useEffect(() => {
-    document.body.classList.add(cx('overflow-y-hidden'))
-
-    return () => {
-      document.body.classList.remove(cx('overflow-y-hidden'))
-    }
-  }, [])
+function Sidebar({ children, isVisible, setIsVisible }) {
+  useBodyScrollLock(isVisible)
 
   return (
-    <div className={cx('background')}>
-      <div className={cx('sidebar')}>{children}</div>
+    <div className={cx("background")}>
+      <div className={cx("sidebar")}>
+        <CloseIcon
+          width="24px"
+          height="24px"
+          color="#A5A5A5"
+          className={cx("icon")}
+          onClick={() => setIsVisible(false)}
+        />
+        {children}
+      </div>
     </div>
   )
 }

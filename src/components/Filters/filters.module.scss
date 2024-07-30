@@ -21,25 +21,11 @@
   border: 1px solid #ccc;
 }
 
-.header {
-  padding-block: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .title {
+  padding-block: 20px;
   font-family: var(--font-secondary);
   font-weight: 600;
   font-size: 2rem;
-}
-
-.icon {
-  cursor: pointer;
-
-  &:hover {
-    color: var(--color-primary);
-  }
 }
 
 .content {

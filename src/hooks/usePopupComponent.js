@@ -1,14 +1,14 @@
-import { useEffect, useState } from 'react';
-import { usePopper } from 'react-popper'
+import { useEffect, useState } from "react";
+import { usePopper } from "react-popper"
 
 export const usePopupComponent = (referenceRef, popperRef) => {
     const [arrowElement, setArrowElement] = useState(null)
     const [visible, setVisibility] = useState(false)
 
     useEffect(() => {
-        document.addEventListener('mousedown', handleDocumentClick)
+        document.addEventListener("mousedown", handleDocumentClick)
         return () => {
-            document.removeEventListener('mousedown', handleDocumentClick)
+            document.removeEventListener("mousedown", handleDocumentClick)
         }
     }, [])
 
@@ -20,16 +20,16 @@ export const usePopupComponent = (referenceRef, popperRef) => {
     }
 
     const { styles, attributes } = usePopper(referenceRef.current, popperRef.current, {
-        placement: 'bottom',
+        placement: "bottom",
         modifiers: [
             {
-                name: 'offset',
+                name: "offset",
                 enabled: true,
                 options: {
                     offset: [0, 40],
                 },
             },
-            { name: 'arrow', options: { element: arrowElement, padding: 8 } },
+            { name: "arrow", options: { element: arrowElement, padding: 8 } },
         ],
     })
 
