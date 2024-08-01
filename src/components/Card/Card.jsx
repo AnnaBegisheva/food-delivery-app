@@ -1,12 +1,17 @@
+import { useState } from "react"
 import styles from "./card.module.scss"
 import classNames from "classnames/bind"
-import Button from "../Button/Button.jsx"
 import { RUB_SYMBOL } from "../../constants/index.js"
+import Button from "../Button/Button.jsx"
 import Label from "../Label/Label.jsx"
+import Modal from "../Modal/Modal.jsx"
+import ProductDetails from "../ProductDetails/ProductDetails.jsx"
 
 const cx = classNames.bind(styles)
 
 function Card({ product }) {
+  const [isModalVisible, setIsModalVisible] = useState(false)
+
   return (
     <div className={cx("card")}>
       {product.is_new && <Label text="New" type="green" size="small" />}
@@ -22,8 +27,20 @@ function Card({ product }) {
         <div className={cx("price")}>
           {product.categories_id === 1 ? "от" : ""} {product.price} {RUB_SYMBOL}
         </div>
-        <Button text="Выбрать" color="primary" size="long" />
+        <Button
+          text="Выбрать"
+          color="primary"
+          size="long"
+          onClick={() => {
+            setIsModalVisible(true)
+          }}
+        />
       </div>
+      {isModalVisible && (
+        <Modal isVisible={isModalVisible} setIsVisible={setIsModalVisible} type="modal">
+          <ProductDetails product={product} />
+        </Modal>
+      )}
     </div>
   )
 }
