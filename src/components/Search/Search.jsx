@@ -4,29 +4,50 @@ import styles from "./search.module.scss"
 import classNames from "classnames/bind"
 import Button from "../Button/Button.jsx"
 import Icon from "../../assets/images/location-pin.svg?react"
-import { usePopupComponent } from "../../hooks/usePopupComponent.js"
+import { toast } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 
 const cx = classNames.bind(styles)
 
 const Search = () => {
   const addressRef = useRef(null)
-  const referenceRef = useRef(null)
-  const popperRef = useRef(null)
-  const [isValid, setIsValid] = useState()
 
-  const { styles, attributes, visible, setVisibility, setArrowElement } = usePopupComponent(referenceRef, popperRef)
+  const toastAdress = useRef(null)
 
   const checkAddress = (e) => {
     e.preventDefault()
     if (!addressRef.current.value) {
       return
     } else {
+      toastAdress.current = toast.loading("Проверяем...", {
+        toastId: toastAdress,
+        position: "top-right",
+        hideProgressBar: false,
+        closeButton: true,
+        pauseOnHover: true,
+        draggable: true,
+      })
+
       const requestBody = JSON.stringify({
         address: addressRef.current.value,
       })
       postData("delivery/check-location", requestBody).then((res) => {
-        setIsValid(res.result)
-        setVisibility(!visible)
+        if (!res.result) {
+          toast.update(toastAdress.current, {
+            toastId: toastAdress,
+            render: "К сожалению, мы не доставляем по указанному адресу",
+            type: "error",
+            isLoading: false,
+          })
+        } else {
+          toast.update(toastAdress.current, {
+            toastId: toastAdress,
+            render: "В зоне доставки 🚀",
+            type: "success",
+            isLoading: false,
+          })
+        }
+
         document.getElementById("addressForm").reset()
       })
     }
@@ -42,17 +63,8 @@ const Search = () => {
           <Icon className={cx("icon")} />
           <input ref={addressRef} type="search" name="checkAddress" className={cx("input")} placeholder="Адрес" />
         </div>
-        <Button text="Проверить" color="primary" size="long" type="submit" ref={referenceRef} />
+        <Button text="Проверить" color="primary" size="long" type="submit" />
       </form>
-
-      {visible && (
-        <div ref={popperRef} style={styles.popper} {...attributes.popper} className={cx("popup")}>
-          <div ref={setArrowElement} style={styles.arrow} className={cx("tooltip")}></div>
-          <div className={cx("message", { green: isValid })}>
-            {isValid ? "В зоне доставки" : "К сожалению, мы не доставляем по указанному адресу"}
-          </div>
-        </div>
-      )}
     </>
   )
 }

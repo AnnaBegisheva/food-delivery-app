@@ -19,7 +19,7 @@ function Products({ categories, products }) {
             )}
             <div className={cx("products-box")}>
               {products
-                ?.filter((item) => item.categories_id === category.id)
+                ?.filter((item) => item.category_id === category.id)
                 ?.map((product) => (
                   <Card product={product} key={product.id} />
                 ))}
