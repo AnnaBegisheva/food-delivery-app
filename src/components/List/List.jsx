@@ -1,4 +1,4 @@
-import IconHandler from '../../handlers/icon_handler'
+import IconHandler from "../../handlers/icon_handler"
 
 function List({ title, items, titleClass, listClass, itemClass }) {
   return (

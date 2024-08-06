@@ -6,6 +6,7 @@
   border: 1px solid currentColor;
   height: 48px;
   display: flex;
+  justify-content: center;
   align-items: center;
   cursor: pointer;
   transition: all 0.2s;
@@ -28,6 +29,10 @@
 
 .long {
   padding-inline: 2.5rem;
+}
+
+.fullWidth {
+  width: 100%;
 }
 
 .primary {

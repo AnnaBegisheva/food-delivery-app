@@ -1,0 +1,85 @@
+.filters {
+  padding: 12px 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100svh;
+  overflow-y: scroll;
+}
+
+.filters::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.filters::-webkit-scrollbar-thumb {
+  background-color: var(--color-primary);
+  border-radius: 5px;
+}
+
+.filters::-webkit-scrollbar-track {
+  background-color: #ddd;
+  border: 1px solid #ccc;
+}
+
+.title {
+  padding-block: 20px;
+  font-family: var(--font-secondary);
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+.content {
+  flex: 1;
+}
+
+.section {
+  &:not(:last-child) {
+    margin-bottom: 24px;
+  }
+
+  &:last-child {
+    margin-bottom: 28px;
+  }
+}
+
+.section-name {
+  font-weight: 400;
+  color: var(--color-text-grey);
+  padding-bottom: 12px;
+}
+
+.filters-box {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.filter-name {
+  display: inline-block;
+  font-family: var(--font-secondary);
+  font-size: 0.875rem;
+  line-height: 1.286;
+  padding: 11px 16px;
+  border: 1px solid var(--color-grey-light);
+  border-radius: 16px;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary);
+  }
+}
+
+.selected {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-grey-light);
+}
