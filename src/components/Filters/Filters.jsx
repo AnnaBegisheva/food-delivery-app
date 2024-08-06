@@ -1,13 +1,13 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import styles from "./filters.module.scss"
 import classNames from "classnames/bind"
 import Button from "../Button/Button"
 
 const cx = classNames.bind(styles)
 
-const filters = [
+const data = [
   {
-    name: "Общее",
+    name: "Общие",
     filterBy: [
       "Хит",
       "Новинка",
@@ -36,7 +36,7 @@ const filters = [
     filterBy: ["Пепперони", "Свинина", "Ветчина", "Бекон", "Говядина", "Чоризо", "Колбаски", "Куриная грудка"],
   },
   {
-    name: "Компонент",
+    name: "Ингридиенты",
     filterBy: [
       "Креветка",
       "Ананасы",
@@ -56,8 +56,14 @@ const filters = [
   },
 ]
 
-const Filters = ({}) => {
+const Filters = ({ filters }) => {
   const [selectedFilters, setSelectedFilters] = useState([])
+
+  filters = filters.map((element) => {
+    if (data.some((item) => item.name === element.label)) {
+      return { ...element, options: data.find((item) => item.name === element.label).filterBy }
+    }
+  })
 
   const addFilter = (filter) => {
     setSelectedFilters((prevSelectedFilters) => {
@@ -79,10 +85,10 @@ const Filters = ({}) => {
       </div>
       <div className={cx("content")}>
         {filters.map((item) => (
-          <div className={cx("section")} key={item.name}>
-            <h4 className={cx("section-name")}>{item.name}</h4>
+          <div className={cx("section")} key={item.id}>
+            <h4 className={cx("section-name")}>{item.label}</h4>
             <div className={cx("filters-box")}>
-              {item.filterBy.map((filter) => (
+              {item.options.map((filter) => (
                 <span
                   className={cx("filter-name", {
                     selected: selectedFilters.includes(filter),

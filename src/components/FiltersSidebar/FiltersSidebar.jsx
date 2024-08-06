@@ -4,7 +4,7 @@ import Sidebar from "../Modal/Modal"
 import FilterIcon from "../../assets/images/filter.svg?react"
 import Filters from "../Filters/Filters"
 
-const FiltersSidebar = () => {
+const FiltersSidebar = ({ filters }) => {
   const [isSidebarVisible, setIsSidebarVisible] = useState(false)
 
   return (
@@ -20,7 +20,7 @@ const FiltersSidebar = () => {
       />
       {isSidebarVisible && (
         <Sidebar isVisible={isSidebarVisible} setIsVisible={setIsSidebarVisible} type="sidebar">
-          <Filters />
+          <Filters filters={filters} />
         </Sidebar>
       )}
     </>
