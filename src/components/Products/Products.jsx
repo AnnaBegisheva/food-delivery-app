@@ -12,14 +12,14 @@ function Products({ categories, products }) {
         {categories?.map((category) => (
           <div key={category.name} className={cx("cat-box")}>
             <h2 className={cx("title")}>{category.name}</h2>
-            {category.order < 3 && ( // TODO: нужен флаг для категорий, которые фильтруются
+            {category.filter_groups.length && (
               <div className={cx("btn-box")}>
-                <FiltersSidebar />
+                <FiltersSidebar filters={category.filter_groups} />
               </div>
             )}
             <div className={cx("products-box")}>
               {products
-                ?.filter((item) => item.categories_id === category.id)
+                ?.filter((item) => item.category_id === category.id)
                 ?.map((product) => (
                   <Card product={product} key={product.id} />
                 ))}

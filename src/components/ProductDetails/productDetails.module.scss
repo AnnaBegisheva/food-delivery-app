@@ -1,0 +1,93 @@
+.products {
+  max-width: 66.875rem;
+  //   width: clamp(80%, 66.875rem, 1070px);
+  padding: 20px;
+  font-family: var(--font-secondary);
+  display: flex;
+  gap: 5.6%;
+}
+
+.image-box {
+  margin-left: 3.9%;
+  max-width: 43.7%;
+  align-self: center;
+
+  img {
+    max-width: 100%;
+  }
+}
+
+.title {
+  font-size: 1.25rem;
+  padding-block: 0.75rem;
+}
+
+.crust,
+.size {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid var(--color-grey-light);
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.tab {
+  flex: 1;
+  text-align: center;
+  font-family: var(--font-primary);
+}
+
+.input {
+  display: none;
+  transition: all 0.2s ease-out;
+
+  &:checked ~ .label {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+  }
+}
+
+.label {
+  cursor: pointer;
+  display: inline-block;
+  width: 100%;
+  padding-block: 13px;
+  border-radius: 6px;
+}
+
+.subtitle {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.icons-container {
+  display: flex;
+  gap: 1.25rem;
+  justify-content: space-between;
+  text-align: center;
+  font-family: var(--font-secondary);
+  font-size: 0.875rem;
+  margin-bottom: 1.5rem;
+}
+
+.order {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-primary);
+}
+
+.total {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  font-family: var(--font-secondary);
+}
+
+.weight {
+  color: var(--color-text-grey);
+  font-size: 0.875rem;
+  margin-left: 0.75rem;
+}

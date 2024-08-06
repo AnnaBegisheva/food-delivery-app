@@ -1,0 +1,82 @@
+.item {
+  display: block;
+}
+
+.icon-box {
+  width: 105px;
+  height: 105px;
+  border: 1px solid var(--color-grey-light);
+  border-radius: 12px;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2 ease-out;
+
+  &:hover {
+    box-shadow: var(--shadow-primary);
+  }
+
+  & > svg {
+    height: 40px;
+    width: auto;
+    color: var(--color-primary);
+  }
+}
+
+.pepperoni,
+.sauce {
+  & > svg {
+    & path {
+      stroke: white;
+    }
+  }
+}
+
+.check {
+  display: none;
+}
+
+.checkbox {
+  display: none;
+}
+
+.include:checked ~ .icon-box {
+  border: 1px solid var(--color-primary);
+  & .check {
+    display: block;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    color: var(--color-primary);
+  }
+}
+
+.exclude:checked ~ .icon-box {
+  & .check {
+    display: block;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    color: var(--color-text-grey);
+  }
+
+  & > svg {
+    color: var(--color-text-grey);
+  }
+}
+
+.exclude:checked ~ .item-name {
+  color: var(--color-text-grey);
+}
+
+.item-name {
+  white-space: pre-wrap;
+}
+
+.item-price {
+  font-weight: 600;
+  color: var(--color-primary);
+}
