@@ -1,4 +1,4 @@
-@import './vars';
+@import "./vars";
 
 *,
 *::after,
@@ -50,8 +50,7 @@ a {
   gap: 1.875em;
 }
 
-.error {
-  justify-content: center;
-  align-items: center;
-  font-size: 3rem;
+.toast {
+  width: 30vw;
+  height: 100px;
 }
