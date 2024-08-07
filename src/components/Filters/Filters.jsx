@@ -1,100 +1,104 @@
-import { useEffect, useState } from "react"
-import styles from "./filters.module.scss"
-import classNames from "classnames/bind"
-import Button from "../Button/Button"
+import { useState } from 'react';
+import styles from './filters.module.scss';
+import classNames from 'classnames/bind';
+import Button from '../Button/Button';
 
-const cx = classNames.bind(styles)
+const cx = classNames.bind(styles);
 
 const data = [
   {
-    name: "Общие",
+    name: 'Общие',
     filterBy: [
-      "Хит",
-      "Новинка",
-      "С мясом",
-      "Вегетарианская",
-      "С курицей",
-      "Без лука",
-      "С грибами",
-      "С морепродуктами",
-      "Барбекью",
+      'Хит',
+      'Новинка',
+      'С мясом',
+      'Вегетарианская',
+      'С курицей',
+      'Без лука',
+      'С грибами',
+      'С морепродуктами',
+      'Барбекью',
     ],
   },
   {
-    name: "Сыр",
+    name: 'Сыр',
     filterBy: [
-      "Реджанито",
-      "Моцарелла",
-      "Чеддер",
-      "С голубой плесенью",
-      "Смесь итальянских сыров",
-      "Мягкий молодой сыр",
+      'Реджанито',
+      'Моцарелла',
+      'Чеддер',
+      'С голубой плесенью',
+      'Смесь итальянских сыров',
+      'Мягкий молодой сыр',
     ],
   },
   {
-    name: "Мясо",
-    filterBy: ["Пепперони", "Свинина", "Ветчина", "Бекон", "Говядина", "Чоризо", "Колбаски", "Куриная грудка"],
+    name: 'Мясо',
+    filterBy: ['Пепперони', 'Свинина', 'Ветчина', 'Бекон', 'Говядина', 'Чоризо', 'Колбаски', 'Куриная грудка'],
   },
   {
-    name: "Ингридиенты",
+    name: 'Ингридиенты',
     filterBy: [
-      "Креветка",
-      "Ананасы",
-      "Шампиньоны",
-      "Лук",
-      "Перец халапеньо",
-      "Орегано",
-      "Зеленый перец",
-      "Томаты",
-      "Чеснок",
-      "Красный перец",
-      "Оливки",
-      "Маслины",
-      "Клубника",
-      "Смесь итальянских трав",
+      'Креветка',
+      'Ананасы',
+      'Шампиньоны',
+      'Лук',
+      'Перец халапеньо',
+      'Орегано',
+      'Зеленый перец',
+      'Томаты',
+      'Чеснок',
+      'Красный перец',
+      'Оливки',
+      'Маслины',
+      'Клубника',
+      'Смесь итальянских трав',
     ],
   },
-]
+];
 
 const Filters = ({ filters }) => {
-  const [selectedFilters, setSelectedFilters] = useState([])
+  const [selectedFilters, setSelectedFilters] = useState([]);
 
   filters = filters.map((element) => {
     if (data.some((item) => item.name === element.label)) {
-      return { ...element, options: data.find((item) => item.name === element.label).filterBy }
+      return { ...element, options: data.find((item) => item.name === element.label).filterBy };
     }
-  })
+  });
 
   const addFilter = (filter) => {
     setSelectedFilters((prevSelectedFilters) => {
       if (prevSelectedFilters.includes(filter)) {
-        return [...prevSelectedFilters.filter((item) => item !== filter)]
+        return [...prevSelectedFilters.filter((item) => item !== filter)];
       }
-      return [...prevSelectedFilters, filter]
-    })
-  }
+      return [...prevSelectedFilters, filter];
+    });
+  };
 
   const resetAllFilters = () => {
-    setSelectedFilters([])
-  }
+    setSelectedFilters([]);
+  };
 
   return (
-    <div className={cx("filters")}>
-      <div className={cx("header")}>
-        <h2 className={cx("title")}>Фильтры</h2>
+    <div className={cx('filters')}>
+      <div className={cx('header')}>
+        <h2 className={cx('title')}>Фильтры</h2>
       </div>
-      <div className={cx("content")}>
+      <div className={cx('content')}>
         {filters.map((item) => (
-          <div className={cx("section")} key={item.id}>
-            <h4 className={cx("section-name")}>{item.label}</h4>
-            <div className={cx("filters-box")}>
+          <div
+            className={cx('section')}
+            key={item.id}
+          >
+            <h4 className={cx('section-name')}>{item.label}</h4>
+            <div className={cx('filters-box')}>
               {item.options.map((filter) => (
                 <span
-                  className={cx("filter-name", {
+                  className={cx('filter-name', {
                     selected: selectedFilters.includes(filter),
                   })}
                   key={filter}
-                  onClick={() => addFilter(filter)}>
+                  onClick={() => addFilter(filter)}
+                >
                   {filter}
                 </span>
               ))}
@@ -102,12 +106,21 @@ const Filters = ({ filters }) => {
           </div>
         ))}
       </div>
-      <div className={cx("buttons")}>
-        <Button text="Сбросить" color="primary" size="fullWidth" onClick={resetAllFilters} />
-        <Button text="Применить" color="primary" size="fullWidth" />
+      <div className={cx('buttons')}>
+        <Button
+          text="Сбросить"
+          color="primary"
+          size="fullWidth"
+          onClick={resetAllFilters}
+        />
+        <Button
+          text="Применить"
+          color="primary"
+          size="fullWidth"
+        />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Filters
+export default Filters;

@@ -1,10 +1,10 @@
-import styles from "./label.module.scss"
-import classNames from "classnames/bind"
+import styles from './label.module.scss';
+import classNames from 'classnames/bind';
 
-const cx = classNames.bind(styles)
+const cx = classNames.bind(styles);
 
 function Label({ text, type, size }) {
-  return <div className={cx("container", type, size)}>{text}</div>
+  return <div className={cx('container', type, size)}>{text}</div>;
 }
 
-export default Label
+export default Label;
