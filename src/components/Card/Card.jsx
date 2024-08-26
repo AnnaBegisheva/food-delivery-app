@@ -55,7 +55,7 @@ function Card({ product }) {
       {isModalVisible && (
         <Modal
           isVisible={isModalVisible}
-          setIsVisible={setIsModalVisible}
+          onClose={() => setIsModalVisible(false)}
           type="modal"
         >
           <ProductDetails product={product} />
