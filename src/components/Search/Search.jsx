@@ -18,39 +18,38 @@ const Search = () => {
     e.preventDefault();
     if (!addressRef.current.value) {
       return;
-    } else {
-      toastAdress.current = toast.loading('Проверяем...', {
-        toastId: toastAdress,
-        position: 'top-right',
-        hideProgressBar: false,
-        closeButton: true,
-        pauseOnHover: true,
-        draggable: true,
-      });
-
-      const requestBody = JSON.stringify({
-        address: addressRef.current.value,
-      });
-      postData('delivery/check-location', requestBody).then((res) => {
-        if (!res.result) {
-          toast.update(toastAdress.current, {
-            toastId: toastAdress,
-            render: 'К сожалению, мы не доставляем по указанному адресу',
-            type: 'error',
-            isLoading: false,
-          });
-        } else {
-          toast.update(toastAdress.current, {
-            toastId: toastAdress,
-            render: 'В зоне доставки 🚀',
-            type: 'success',
-            isLoading: false,
-          });
-        }
-
-        document.getElementById('addressForm').reset();
-      });
     }
+    toastAdress.current = toast.loading('Проверяем...', {
+      toastId: toastAdress,
+      position: 'top-right',
+      hideProgressBar: false,
+      closeButton: true,
+      pauseOnHover: true,
+      draggable: true,
+    });
+
+    const requestBody = JSON.stringify({
+      address: addressRef.current.value,
+    });
+    postData('delivery/check-location', requestBody).then((res) => {
+      if (!res.result) {
+        toast.update(toastAdress.current, {
+          toastId: toastAdress,
+          render: 'К сожалению, мы не доставляем по указанному адресу',
+          type: 'error',
+          isLoading: false,
+        });
+      } else {
+        toast.update(toastAdress.current, {
+          toastId: toastAdress,
+          render: 'В зоне доставки 🚀',
+          type: 'success',
+          isLoading: false,
+        });
+      }
+
+      document.getElementById('addressForm').reset();
+    });
   };
 
   return (
@@ -74,7 +73,7 @@ const Search = () => {
           />
         </div>
         <Button
-          text="Проверить"
+          content="Проверить"
           color="primary"
           size="long"
           type="submit"
