@@ -31,7 +31,7 @@ function App() {
   });
 
   useEffect(() => {
-    toastId.current = toast.loading('Loading...');
+    toastId.current = toast.loading('Загрузка...');
 
     if (categoriesQuery.isError || productsQuery.isError) {
       toast.update(toastId.current, {
@@ -44,14 +44,14 @@ function App() {
         pauseOnHover: true,
         draggable: true,
       });
-    } else {
-      toast.update(toastId.current, {
-        toastId: toastId,
-        isLoading: false,
-        autoClose: 500,
-        hideProgressBar: true,
-      });
+      return;
     }
+    toast.update(toastId.current, {
+      toastId: toastId,
+      isLoading: false,
+      autoClose: 500,
+      hideProgressBar: true,
+    });
   }, [categoriesQuery.isError, productsQuery.isError]);
 
   return (

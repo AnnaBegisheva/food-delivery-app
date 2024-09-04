@@ -13,12 +13,24 @@ function Products({ categories, products }) {
     setFilteredProducts(products);
   }, [products]);
 
-  const filterProducts = (ids) => {
+  const filterProducts = (selectedFilters) => {
+    const counter = {};
+
+    selectedFilters.forEach((element) => {
+      element.products.forEach((item) => {
+        counter[item.product_id] = (counter[item.product_id] || 0) + 1;
+      });
+    });
+
+    const ids = Object.keys(counter)
+      .filter((id) => counter[id] === selectedFilters.length)
+      .map((key) => +key);
+
     if (!ids.length) {
       setFilteredProducts([]);
-    } else {
-      setFilteredProducts(products.filter((product) => ids.includes(product.id)));
+      return;
     }
+    setFilteredProducts(products.filter((product) => ids.includes(product.id)));
   };
 
   return (

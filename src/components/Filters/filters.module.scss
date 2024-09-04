@@ -75,6 +75,21 @@
   color: var(--color-white);
 }
 
+.disabled {
+  background-color: var(--color-white);
+  color: var(--color-text-grey);
+  cursor: not-allowed;
+
+  &:active {
+    pointer-events: none;
+  }
+
+  &:hover {
+    color: var(--color-text-grey);
+    border: 1px solid var(--color-text-grey);
+  }
+}
+
 .buttons {
   display: flex;
   justify-content: space-between;

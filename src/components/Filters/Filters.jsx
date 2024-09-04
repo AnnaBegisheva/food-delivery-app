@@ -5,6 +5,8 @@ import Button from '../Button/Button';
 const cx = classNames.bind(styles);
 
 const Filters = ({ filters, selectedFilters, selectFilter, resetAllFilters, applyAllFilters }) => {
+  const disabledFilters = selectedFilters.reduce((acc, item) => [...acc, ...item.incompatible_options], []);
+
   return (
     <div className={cx('filters')}>
       <div className={cx('header')}>
@@ -22,6 +24,7 @@ const Filters = ({ filters, selectedFilters, selectFilter, resetAllFilters, appl
                 <span
                   className={cx('filter-name', {
                     selected: selectedFilters.includes(filter),
+                    disabled: disabledFilters?.includes(filter.id),
                   })}
                   key={filter.id}
                   onClick={() => selectFilter(filter)}
@@ -35,13 +38,13 @@ const Filters = ({ filters, selectedFilters, selectFilter, resetAllFilters, appl
       </div>
       <div className={cx('buttons')}>
         <Button
-          text="Сбросить"
+          content="Сбросить"
           color="primary"
           size="fullWidth"
           onClick={resetAllFilters}
         />
         <Button
-          text="Применить"
+          content="Применить"
           color="primary"
           size="fullWidth"
           onClick={applyAllFilters}

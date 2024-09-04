@@ -44,7 +44,7 @@ function Card({ product }) {
           {product.categories_id === 1 ? 'от' : ''} {product.price} {RUB_SYMBOL}
         </div>
         <Button
-          text="Выбрать"
+          content="Выбрать"
           color="primary"
           size="long"
           onClick={() => {

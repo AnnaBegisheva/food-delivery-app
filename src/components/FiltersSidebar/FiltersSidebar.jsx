@@ -2,7 +2,9 @@ import { useState } from 'react';
 import Button from '../Button/Button';
 import Sidebar from '../Modal/Modal';
 import FilterIcon from '../../assets/images/filter.svg?react';
+import Counter from '../Counter/Counter';
 import Filters from '../Filters/Filters';
+import { toggleItem } from '../../helpers/helperFunctions';
 
 const FiltersSidebar = ({ filters, filterProducts, setAllProducts }) => {
   const [isSidebarVisible, setIsSidebarVisible] = useState(false);
@@ -10,12 +12,7 @@ const FiltersSidebar = ({ filters, filterProducts, setAllProducts }) => {
   const [appliedFilters, setAppliedFilters] = useState([]);
 
   const selectFilter = (filter) => {
-    setSelectedFilters((prevSelectedFilters) => {
-      if (prevSelectedFilters.includes(filter)) {
-        return [...prevSelectedFilters.filter((item) => item !== filter)];
-      }
-      return [...prevSelectedFilters, filter];
-    });
+    setSelectedFilters((prev) => toggleItem(prev, filter));
   };
 
   const resetAllFilters = () => {
@@ -26,50 +23,37 @@ const FiltersSidebar = ({ filters, filterProducts, setAllProducts }) => {
   };
 
   const applyAllFilters = () => {
-    if (selectedFilters.length === 0) return;
+    if (!selectedFilters.length) return;
     setAppliedFilters(selectedFilters);
-
-    if (selectedFilters.length === 1) {
-      filterProducts(selectedFilters[0].products.map((item) => item.product_id));
-    } else {
-      const counter = {};
-      selectedFilters.forEach((element) => {
-        element.products.forEach((item) => {
-          counter[item.product_id] = (counter[item.product_id] || 0) + 1;
-        });
-      });
-
-      const filteredProductsIds = Object.keys(counter)
-        .filter((id) => counter[id] === selectedFilters.length)
-        .map((key) => +key);
-
-      filterProducts(filteredProductsIds);
-    }
     setIsSidebarVisible(false);
+    filterProducts(selectedFilters);
   };
 
   const closeSidebar = () => {
     if (appliedFilters.length === 0) {
       resetAllFilters();
-    } else {
-      setIsSidebarVisible(false);
+      return;
     }
+    setIsSidebarVisible(false);
   };
 
   return (
     <>
       <Button
-        text="Фильтры"
-        counter={appliedFilters.length ? appliedFilters.length : ''}
+        content={
+          <>
+            <FilterIcon
+              height="16px"
+              width="16px"
+              color="#FF7010"
+              style={{ marginRight: '8px' }}
+            />
+            <p>Фильтры</p>
+            <Counter count={appliedFilters.length} />
+          </>
+        }
         color="secondary"
         size="small"
-        icon={
-          <FilterIcon
-            height="16px"
-            width="16px"
-            color="#FF7010"
-          />
-        }
         onClick={() => {
           setIsSidebarVisible(true);
         }}

@@ -5,6 +5,7 @@ import Button from '../Button/Button.jsx';
 import Label from '../Label/Label.jsx';
 import { RUB_SYMBOL } from '../../constants/index.js';
 import IconCheckbox from '../IconCheckbox/IconCheckbox.jsx';
+import { toggleItem } from '../../helpers/helperFunctions.js';
 
 const cx = classNames.bind(styles);
 
@@ -58,15 +59,6 @@ const ProductDetails = ({ product }) => {
     calcPrice();
   }, [size, toppings, product.price, product.toppings]);
 
-  const handleChange = (name, setState) => {
-    setState((prev) => {
-      if (prev.includes(name)) {
-        return [...prev.filter((item) => item !== name)];
-      }
-      return [...prev, name];
-    });
-  };
-
   return (
     <div className={cx('products')}>
       {product.is_new && (
@@ -96,7 +88,7 @@ const ProductDetails = ({ product }) => {
               key={ingredient.id}
               item={ingredient}
               isChecked={ingredients.includes(ingredient.name)}
-              handleChange={() => handleChange(ingredient.name, setIngredients)}
+              handleChange={() => setIngredients((prev) => toggleItem(prev, ingredient.name))}
               type="exclude"
             />
           ))}
@@ -162,7 +154,7 @@ const ProductDetails = ({ product }) => {
                 key={topping.id}
                 item={topping}
                 isChecked={toppings.includes(topping.name)}
-                handleChange={() => handleChange(topping.name, setToppings)}
+                handleChange={() => setToppings((prev) => toggleItem(prev, topping.name))}
                 type="include"
               />
             ))}
@@ -175,7 +167,7 @@ const ProductDetails = ({ product }) => {
             <span className={cx('weight')}>{product.weight} г</span>
           </div>
           <Button
-            text="Добавить"
+            content="Добавить"
             color="primary"
             size="long"
           />

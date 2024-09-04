@@ -21,21 +21,31 @@ const Header = ({ isSticky, categories }) => {
           {isSticky && <CategoriesList categories={categories} />}
         </div>
         <Button
-          text={`${sum} ${RUB_SYMBOL}`}
+          content={
+            <>
+              <span className={cx('icon')}>
+                <CartIcon />
+              </span>
+              {sum} {RUB_SYMBOL}
+            </>
+          }
           color="primary"
           size="small"
-          icon={<CartIcon />}
         />
         <Button
-          text="Войти"
+          content={
+            <>
+              <span className={cx('icon')}>
+                <AccountIcon
+                  height="20px"
+                  width="16px"
+                />
+              </span>
+              Войти
+            </>
+          }
           color="primary"
           size="small"
-          icon={
-            <AccountIcon
-              height="20px"
-              width="16px"
-            />
-          }
         />
       </div>
     </header>
