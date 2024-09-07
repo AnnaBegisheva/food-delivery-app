@@ -1,0 +1,16 @@
+.counter {
+  display: flex;
+  align-items: center;
+  height: 36px;
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+  font-family: var(--font-secondary);
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 6px;
+}
+
+.counter-box {
+  width: 30px;
+  text-align: center;
+}

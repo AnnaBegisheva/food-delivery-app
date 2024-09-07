@@ -44,7 +44,7 @@ function Card({ product }) {
           {product.categories_id === 1 ? 'от' : ''} {product.price} {RUB_SYMBOL}
         </div>
         <Button
-          text="Выбрать"
+          content="Выбрать"
           color="primary"
           size="long"
           onClick={() => {
@@ -55,7 +55,7 @@ function Card({ product }) {
       {isModalVisible && (
         <Modal
           isVisible={isModalVisible}
-          setIsVisible={setIsModalVisible}
+          onClose={() => setIsModalVisible(false)}
           type="modal"
         >
           <ProductDetails product={product} />

@@ -5,15 +5,15 @@ import useBodyScrollLock from '../../hooks/useBodyScrollLock';
 
 const cx = classNames.bind(styles);
 
-function Modal({ children, isVisible, setIsVisible, type }) {
+function Modal({ children, isVisible, onClose, type, width }) {
   useBodyScrollLock(isVisible);
 
   return (
     <div className={cx('background')}>
-      <div className={cx(type)}>
+      <div className={cx(type, width)}>
         <CloseIcon
           className={cx('icon')}
-          onClick={() => setIsVisible(false)}
+          onClick={onClose}
         />
         {children}
       </div>

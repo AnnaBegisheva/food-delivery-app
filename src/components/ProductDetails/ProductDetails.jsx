@@ -5,6 +5,7 @@ import Button from '../Button/Button.jsx';
 import Label from '../Label/Label.jsx';
 import { RUB_SYMBOL } from '../../constants/index.js';
 import IconCheckbox from '../IconCheckbox/IconCheckbox.jsx';
+import { toggleItem } from '../../helpers/helperFunctions.js';
 
 const cx = classNames.bind(styles);
 
@@ -20,7 +21,7 @@ const sizes = [
 ];
 
 const ProductDetails = ({ product }) => {
-  const [crust, setCrust] = useState('traditional');
+  const [crust, setCrust] = useState('Традиционное');
   const [size, setSize] = useState('20');
   const [ingredients, setIngredients] = useState([]);
   const [toppings, setToppings] = useState([]);
@@ -58,13 +59,18 @@ const ProductDetails = ({ product }) => {
     calcPrice();
   }, [size, toppings, product.price, product.toppings]);
 
-  const handleChange = (name, setState) => {
-    setState((prev) => {
-      if (prev.includes(name)) {
-        return [...prev.filter((item) => item !== name)];
-      }
-      return [...prev, name];
-    });
+  const addToCart = () => {
+    const productToAdd = {
+      id: product.id,
+      category_id: product.category_id,
+      name: product.name,
+      crust,
+      size,
+      removedIngredients: ingredients,
+      chosenToppings: toppings,
+      total,
+    };
+    console.log(productToAdd);
   };
 
   return (
@@ -96,7 +102,7 @@ const ProductDetails = ({ product }) => {
               key={ingredient.id}
               item={ingredient}
               isChecked={ingredients.includes(ingredient.name)}
-              handleChange={() => handleChange(ingredient.name, setIngredients)}
+              handleChange={() => setIngredients((prev) => toggleItem(prev, ingredient.name))}
               type="exclude"
             />
           ))}
@@ -113,9 +119,9 @@ const ProductDetails = ({ product }) => {
                   className={cx('input')}
                   type="radio"
                   name="crust"
-                  value={item.code}
+                  value={item.name}
                   id={item.code}
-                  checked={crust === item.code}
+                  checked={crust === item.name}
                   onChange={(e) => setCrust(e.target.value)}
                 />
                 <label
@@ -162,7 +168,7 @@ const ProductDetails = ({ product }) => {
                 key={topping.id}
                 item={topping}
                 isChecked={toppings.includes(topping.name)}
-                handleChange={() => handleChange(topping.name, setToppings)}
+                handleChange={() => setToppings((prev) => toggleItem(prev, topping.name))}
                 type="include"
               />
             ))}
@@ -175,9 +181,10 @@ const ProductDetails = ({ product }) => {
             <span className={cx('weight')}>{product.weight} г</span>
           </div>
           <Button
-            text="Добавить"
+            content="Добавить"
             color="primary"
             size="long"
+            onClick={addToCart}
           />
         </div>
       </div>
