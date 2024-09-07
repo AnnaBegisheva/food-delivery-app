@@ -21,7 +21,7 @@ const sizes = [
 ];
 
 const ProductDetails = ({ product }) => {
-  const [crust, setCrust] = useState('traditional');
+  const [crust, setCrust] = useState('Традиционное');
   const [size, setSize] = useState('20');
   const [ingredients, setIngredients] = useState([]);
   const [toppings, setToppings] = useState([]);
@@ -58,6 +58,20 @@ const ProductDetails = ({ product }) => {
 
     calcPrice();
   }, [size, toppings, product.price, product.toppings]);
+
+  const addToCart = () => {
+    const productToAdd = {
+      id: product.id,
+      category_id: product.category_id,
+      name: product.name,
+      crust,
+      size,
+      removedIngredients: ingredients,
+      chosenToppings: toppings,
+      total,
+    };
+    console.log(productToAdd);
+  };
 
   return (
     <div className={cx('products')}>
@@ -105,9 +119,9 @@ const ProductDetails = ({ product }) => {
                   className={cx('input')}
                   type="radio"
                   name="crust"
-                  value={item.code}
+                  value={item.name}
                   id={item.code}
-                  checked={crust === item.code}
+                  checked={crust === item.name}
                   onChange={(e) => setCrust(e.target.value)}
                 />
                 <label
@@ -170,6 +184,7 @@ const ProductDetails = ({ product }) => {
             content="Добавить"
             color="primary"
             size="long"
+            onClick={addToCart}
           />
         </div>
       </div>

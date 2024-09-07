@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Button from '../Button/Button';
 import Sidebar from '../Modal/Modal';
 import FilterIcon from '../../assets/images/filter.svg?react';
-import Counter from '../Counter/Counter';
+import LabelQuantity from '../LabelQuantity/LabelQuantity';
 import Filters from '../Filters/Filters';
 import { toggleItem } from '../../helpers/helperFunctions';
 
@@ -49,7 +49,7 @@ const FiltersSidebar = ({ filters, filterProducts, setAllProducts }) => {
               style={{ marginRight: '8px' }}
             />
             <p>Фильтры</p>
-            <Counter count={appliedFilters.length} />
+            <LabelQuantity count={appliedFilters.length} />
           </>
         }
         color="secondary"
